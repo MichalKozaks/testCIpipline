@@ -30,3 +30,6 @@ jobs:
 
     - name: Run linting
       run: flake8 .
+
+    - name: Build Docker image
+      run: docker build -t my_ci_demo:latest .
