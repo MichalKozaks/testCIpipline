@@ -40,5 +40,5 @@ jobs:
     - name: Push image
       run: |
         OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
-        docker tag my_ci_demo:latest ghcr.io/${{ github.repository_owner }}/my_ci_demo:latest
-        docker push ghcr.io/${{ github.repository_owner }}/my_ci_demo:latest
+        docker tag my_ci_demo:latest ghcr.io/$OWNER/my_ci_demo:latest
+        docker push ghcr.io/$OWNER/my_ci_demo:latest
