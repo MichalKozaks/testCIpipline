@@ -33,3 +33,11 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t my_ci_demo:latest .
+
+    - name: Log in to GHCR
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+    - name: Push image
+      run: |
+        docker tag my_ci_demo:latest ghcr.io/${{ github.repository_owner }}/my_ci_demo:latest
+        docker push ghcr.io/${{ github.repository_owner }}/my_ci_demo:latest
