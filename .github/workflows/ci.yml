@@ -40,5 +40,6 @@ jobs:
     - name: Push image
       run: |
         ACTOR=$(echo "${{ github.actor }}" | tr '[:upper:]' '[:lower:]')
-        docker tag my_ci_demo:latest ghcr.io/$ACTOR/my_ci_demo:latest
-        docker push ghcr.io/$ACTOR/my_ci_demo:latest
+        REPO=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+        docker tag my_ci_demo:latest ghcr.io/$REPO:latest
+        docker push ghcr.io/$REPO:latest
