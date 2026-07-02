@@ -1,2 +1,5 @@
 def add(a, b):
-    return a + b
+    if a and b:
+       return a + b
+    else:
+       return None
