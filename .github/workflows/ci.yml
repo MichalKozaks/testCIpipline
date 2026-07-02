@@ -33,13 +33,19 @@ jobs:
       run: pytest -v
 
     - name: Run tests with coverage
-      run: pytest --cov=. --cov-report=xml --cov-report=term
+      run: pytest --cov=. --cov-report=xml --cov-report=term --cov-report=html
 
-    - name: Upload covarage report
+    - name: Upload coverage report
       uses: actions/upload-artifact@v4
       with:
         name: coverage-report
         path: coverage.xml
+
+    - name: Upload HTML coverage
+      uses: actions/upload-artifact@v4
+      with:
+       name: html-coverage
+       path: htmlcov/
 
     - name: Run linting
       run: flake8 .
